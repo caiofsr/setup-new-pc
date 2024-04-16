@@ -20,7 +20,7 @@ install_depencies() {
 
   echo -e "###############\n${PURPLE} Installing dependencies\n###############"
 
-  sudo apt install -y wget curl zsh git build-essential
+  sudo apt install -y wget curl zsh git build-essential unzip
 }
 
 clone_repo() {
