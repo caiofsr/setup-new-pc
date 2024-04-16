@@ -145,6 +145,8 @@ zinit light-mode for \
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light zdharma/history-search-multi-word
+zinit light arzzen/git-quick-stats
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)

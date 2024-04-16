@@ -5,7 +5,13 @@ brew_install() {
 
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
+  (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/caio/.bashrc eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  sudo apt instal -y build-essential
+
   brew install gcc
+
+  brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
 }
 
 install_depencies() {
@@ -40,6 +46,14 @@ install_oh_my_zsh() {
   curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
 
   sudo chsh -s $(which zsh)
+
+  git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+
+  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+  curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh | bash
+
+  cp ./zsh/.zshrc ~/.zshrc
 }
 
 install_depencies
