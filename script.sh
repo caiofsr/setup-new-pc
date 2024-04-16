@@ -13,6 +13,8 @@ install_depencies() {
 
   sudo apt update
 
+  sudo apt upgrade -y
+
   echo "Installing dependencies"
 
   sudo apt install -y wget curl zsh git
