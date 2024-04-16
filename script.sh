@@ -1,7 +1,7 @@
 #!/bin/bash
 
 brew_install() {
-  echo "Installing Homebrew"
+  echo -e "###############\n${PURPLE} Installing Homebrew\n###############"
 
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
@@ -12,19 +12,19 @@ brew_install() {
 }
 
 install_depencies() {
-  echo "Updating apt"
+  echo -e "###############\n${PURPLE} Update apt\n###############"
 
   sudo apt update
 
   sudo apt upgrade -y
 
-  echo "Installing dependencies"
+  echo -e "###############\n${PURPLE} Installing dependencies\n###############"
 
   sudo apt install -y wget curl zsh git build-essential
 }
 
 clone_repo() {
-  echo "Cloning repo"
+  echo -e "###############\n${PURPLE} Cloning repo\n###############"
 
   git clone https://github.com/caiofsr/setup-new-pc.git .setup-pc
 
@@ -32,11 +32,13 @@ clone_repo() {
 }
 
 install_oh_my_zsh() {
-  echo "Installing oh-my-zsh"
+  echo -e "###############\n${PURPLE} Installing oh my zsh\n###############"
 
   curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
 
   sudo chsh -s /bin/zsh
+
+  echo -e "###############\n${PURPLE} Cloning spaceship-theme\n###############"
 
   git clone https://github.com/spaceship-prompt/spaceship-prompt.git "~/.oh-my-zsh/themes/spaceship-prompt" --depth=1
 
@@ -50,27 +52,27 @@ install_oh_my_zsh() {
 }
 
 install_asdf() {
-  echo "Installing asdf"
+  echo -e "###############\n${PURPLE} Installing asdf\n###############"
 
   brew install asdf
 
   source ~/.zshrc
 
-  echo "Installing NodeJS with asdf"
+  echo -e "###############\n${PURPLE} Installing NodeJS with asdf\n###############"
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf install nodejs latest
 
-  echo "Installing Go with asdf"
+  echo -e "###############\n${PURPLE} Installing Go with asdf\n###############"
   asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
   asdf install golang latest
 
-  echo "Installing bun with asdf"
+  echo -e "###############\n${PURPLE} Installing bun with asdf\n###############"
   asdf plugin add bun
   asdf install bun latest
 }
 
 post_install() {
-  echo "Running post install commands"
+  echo -e "###############\n${PURPLE} Running post install commands\n###############"
 
   brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
 
