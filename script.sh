@@ -38,17 +38,9 @@ install_oh_my_zsh() {
 
   sudo chsh -s /bin/zsh
 
-  echo -e "###############\n${PURPLE} Cloning spaceship-theme\n###############"
-
-  git clone https://github.com/spaceship-prompt/spaceship-prompt.git "~/.oh-my-zsh/themes/spaceship-prompt" --depth=1
-
-  ln -s "~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/themes/spaceship.zsh-theme"
-
   curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh | bash
 
   cp ~/.setup-pc/zsh/.zshrc ~/.zshrc
-
-  zsh
 }
 
 install_asdf() {
@@ -71,6 +63,16 @@ install_asdf() {
   asdf install bun latest
 }
 
+add_spaceships_to_zsh() {
+  echo -e "###############\n${PURPLE} Cloning spaceship-theme\n###############"
+
+  zsh
+
+  git clone https://github.com/spaceship-prompt/spaceship-prompt.git "~/.oh-my-zsh/custom/themes/spaceship-prompt" --depth=1
+
+  ln -s "~/.oh-my-zsh/themes/custom/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/themes/spaceship.zsh-theme"
+}
+
 post_install() {
   echo -e "###############\n${PURPLE} Running post install commands\n###############"
 
@@ -86,6 +88,8 @@ brew_install
 clone_repo
 
 install_oh_my_zsh
+
+add_spaceships_to_zsh
 
 install_asdf
 
