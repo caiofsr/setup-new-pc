@@ -1,6 +1,7 @@
 # Setup new PC
 
-First give permissions to the script
+Just run the following command
+
 ```bash
-  chmod +x ./script.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/caiofsr/setup-new-pc/main/script.sh)"
 ```
