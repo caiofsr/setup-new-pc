@@ -1,7 +1,7 @@
 #!/bin/bash
 
 brew_install() {
-  echo -e "###############\n${PURPLE} Installing Homebrew\n###############"
+  echo -e "${PURPLE}###############\n Installing Homebrew\n###############"
 
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
@@ -12,19 +12,19 @@ brew_install() {
 }
 
 install_depencies() {
-  echo -e "###############\n${PURPLE} Update apt\n###############"
+  echo -e "${PURPLE}###############\n Update apt\n###############"
 
   sudo apt update
 
   sudo apt upgrade -y
 
-  echo -e "###############\n${PURPLE} Installing dependencies\n###############"
+  echo -e "${PURPLE}###############\n Installing dependencies\n###############"
 
   sudo apt install -y wget curl zsh git build-essential unzip
 }
 
 clone_repo() {
-  echo -e "###############\n${PURPLE} Cloning repo\n###############"
+  echo -e "${PURPLE}###############\n Cloning repo\n###############"
 
   git clone https://github.com/caiofsr/setup-new-pc.git .setup-pc
 
@@ -32,7 +32,7 @@ clone_repo() {
 }
 
 install_oh_my_zsh() {
-  echo -e "###############\n${PURPLE} Installing oh my zsh\n###############"
+  echo -e "${PURPLE}###############\n Installing oh my zsh\n###############"
 
   curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
 
@@ -44,27 +44,27 @@ install_oh_my_zsh() {
 }
 
 install_asdf() {
-  echo -e "###############\n${PURPLE} Installing asdf\n###############"
+  echo -e "${PURPLE}###############\n Installing asdf\n###############"
 
   brew install asdf
 
   source ~/.zshrc
 
-  echo -e "###############\n${PURPLE} Installing NodeJS with asdf\n###############"
+  echo -e "${PURPLE}###############\n Installing NodeJS with asdf\n###############"
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf install nodejs latest
 
-  echo -e "###############\n${PURPLE} Installing Go with asdf\n###############"
+  echo -e "${PURPLE}###############\n Installing Go with asdf\n###############"
   asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
   asdf install golang latest
 
-  echo -e "###############\n${PURPLE} Installing bun with asdf\n###############"
+  echo -e "${PURPLE}###############\n Installing bun with asdf\n###############"
   asdf plugin add bun
   asdf install bun latest
 }
 
 add_spaceships_to_zsh() {
-  echo -e "###############\n${PURPLE} Cloning spaceship-theme\n###############"
+  echo -e "${PURPLE}###############\n Cloning spaceship-theme\n###############"
 
   zsh
 
@@ -74,7 +74,7 @@ add_spaceships_to_zsh() {
 }
 
 post_install() {
-  echo -e "###############\n${PURPLE} Running post install commands\n###############"
+  echo -e "${PURPLE}###############\n Running post install commands\n###############"
 
   brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
 
