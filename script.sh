@@ -43,11 +43,11 @@ install_oh_my_zsh() {
   ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
   curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh | bash
-
-  cp ./zsh/.zshrc ~/.zshrc
 }
 
 post_install() {
+  cp ~/.setup-pc/zsh/.zshrc ~/.zshrc
+
   zsh
 
   brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
