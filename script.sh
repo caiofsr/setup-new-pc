@@ -48,6 +48,8 @@ install_oh_my_zsh() {
 }
 
 post_install() {
+  zsh
+
   brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
 
   cd ~ && rm -rf .setup-pc
