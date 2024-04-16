@@ -43,12 +43,34 @@ install_oh_my_zsh() {
   ln -s "~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/themes/spaceship.zsh-theme"
 
   curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh | bash
-}
 
-post_install() {
   cp ~/.setup-pc/zsh/.zshrc ~/.zshrc
 
   zsh
+}
+
+install_asdf() {
+  echo "Installing asdf"
+
+  brew install asdf
+
+  source ~/.zshrc
+
+  echo "Installing NodeJS with asdf"
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  asdf install nodejs latest
+
+  echo "Installing Go with asdf"
+  asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
+  asdf install golang latest
+
+  echo "Installing bun with asdf"
+  asdf plugin add bun
+  asdf install bun latest
+}
+
+post_install() {
+  echo "Running post install commands"
 
   brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
 
@@ -57,11 +79,13 @@ post_install() {
 
 install_depencies
 
-install_oh_my_zsh
+brew_install
 
 clone_repo
 
-brew_install
+install_oh_my_zsh
+
+install_asdf
 
 post_install
 
