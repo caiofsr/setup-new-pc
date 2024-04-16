@@ -66,8 +66,6 @@ install_asdf() {
 add_spaceships_to_zsh() {
   echo -e "${PURPLE}###############\n Cloning spaceship-theme\n###############"
 
-  zsh
-
   git clone https://github.com/spaceship-prompt/spaceship-prompt.git "~/.oh-my-zsh/custom/themes/spaceship-prompt" --depth=1
 
   ln -s "~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
@@ -75,6 +73,8 @@ add_spaceships_to_zsh() {
 
 post_install() {
   echo -e "${PURPLE}###############\n Running post install commands\n###############"
+
+  zsh
 
   brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
 
