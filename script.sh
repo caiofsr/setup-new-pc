@@ -9,8 +9,6 @@ brew_install() {
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   brew install gcc
-
-  brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
 }
 
 install_depencies() {
@@ -33,12 +31,6 @@ clone_repo() {
   cd .setup-pc
 }
 
-delete_repo() {
-  echo "Deleting repo"
-
-  cd ~ && rm -rf .setup-pc
-}
-
 install_oh_my_zsh() {
   echo "Installing oh-my-zsh"
 
@@ -55,6 +47,12 @@ install_oh_my_zsh() {
   cp ./zsh/.zshrc ~/.zshrc
 }
 
+post_install() {
+  brew cleanup && rm -f $ZSH_COMPDUMP && omz reload
+
+  cd ~ && rm -rf .setup-pc
+}
+
 install_depencies
 
 install_oh_my_zsh
@@ -63,6 +61,6 @@ clone_repo
 
 brew_install
 
-delete_repo
+post_install
 
 echo "Setup done successfully"
